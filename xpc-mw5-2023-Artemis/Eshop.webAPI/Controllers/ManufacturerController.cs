@@ -99,6 +99,7 @@ namespace Eshop.webAPI.Controllers
             {
                 if (FakeDatabase.Manufacturers.Any(m => m.Name == manufacturerDTO.Name))
                 {
+                    //todo-other id je podstatnejšie ako toto
                     _logger.LogWarning($"Category with name '{manufacturerDTO.Name}' already exists");
                     return Conflict();
                 }
@@ -148,6 +149,9 @@ namespace Eshop.webAPI.Controllers
                 var existingManufacturer = FakeDatabase.Manufacturers.FirstOrDefault(m => m.Id == id);
                 if (existingManufacturer == null)
                 {
+                    // todo-other toto sa da poriešiť skrz 
+                    // using var scope = logger.BeginScope("Processing request from {Address}", address)
+                    // vyhodu to ma ze vsetky nasledne pouzitia ILogger, vratane pouzitia skrz DI v inych services budu obsahovat tento structured log (bohuzial console out of the box nepodporuje structured logs)
                     _logger.LogError($"Invalid UPDATE attempt in {nameof(UpdateManufacturer)})");
                     return BadRequest("Manufacturer not found.");
                 }
@@ -159,7 +163,9 @@ namespace Eshop.webAPI.Controllers
                     return BadRequest("Manufacturer name already exists.");
                 }
 
+                // todo-requirements updatujete iba name, preco? 
                 existingManufacturer.Name = newManufacturer.Name;
+                
                 var updatedManufacturerDTO = _mapper.Map<ManufacturerModel>(manufacturerDTO);
                 return Ok(updatedManufacturerDTO);
             }

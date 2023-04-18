@@ -6,9 +6,15 @@
         public string Description { get; set; }
         public string Title { get; set; }
     }
-    public class ReviewDTO : CreateReviewDTO
+
+    
+    //todo-maintability tu plati že duplikacia je lepšie ako dedičnosť, tieto modely majú rovnaké fieldy ale služia komplet inym use cases
+    public class ReviewDTO
     {
         public Guid Id { get; set; }
+        public int Stars { get; set; }
+        public string Description { get; set; }
+        public string Title { get; set; }
     }
 
 

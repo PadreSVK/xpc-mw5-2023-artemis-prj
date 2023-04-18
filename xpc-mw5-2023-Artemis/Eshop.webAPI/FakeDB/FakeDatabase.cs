@@ -5,14 +5,19 @@ using System.Reflection.Metadata.Ecma335;
 using System.Runtime.Intrinsics.X86;
 using System.Threading.Tasks;
 
+//todo-cleancode PascalCase
 namespace Eshop.webAPI.FakeDB
 {
     public static class FakeDatabase
     {
+        //todo-cleancode - _ prefix alebo nie?
         private static List<CategoryModel> categories = new List<CategoryModel>();
         private static List<CommodityModel> commodities= new List<CommodityModel>();
         private static List<ManufacturerModel> manufacturers = new List<ManufacturerModel>();
         private static List<ReviewModel> reviews = new List<ReviewModel>();
+
+        //todo-other simplification
+        // public static List<CategoryModel> Categories { get; } = new List<CategoryModel>();
 
 
         public static List<CategoryModel> Categories 
@@ -34,6 +39,8 @@ namespace Eshop.webAPI.FakeDB
             get { return reviews;}
         }
 
+        // todo-cleancode: why wrap public API? 
+        // FakeDatabase.Categories.Add(CategoryModel) 
         public static void AddCategory(CategoryModel newCategory)
         {
             categories.Add(newCategory);

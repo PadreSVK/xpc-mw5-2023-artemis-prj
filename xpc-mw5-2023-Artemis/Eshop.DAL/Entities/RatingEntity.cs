@@ -10,6 +10,8 @@ namespace Eshop.DAL.Entities
     {
         private int _stars;
         public string Text { get; set; }
+        
+        // preco je business pravidlo schovane v tejto entity? 
         public required int Stars
         {
             get { return _stars; }

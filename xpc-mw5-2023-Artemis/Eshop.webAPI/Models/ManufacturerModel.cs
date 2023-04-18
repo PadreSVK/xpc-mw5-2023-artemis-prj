@@ -17,7 +17,8 @@ namespace Eshop.webAPI.Models
         {
             Id = Guid.NewGuid();
         }
-
+        //todo-cleancode PascalCase
+        
         public void addCommodity(CommodityModel commodity)
         {
             _commodities.Add(commodity);

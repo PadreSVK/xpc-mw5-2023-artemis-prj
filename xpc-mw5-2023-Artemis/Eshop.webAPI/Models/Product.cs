@@ -12,6 +12,7 @@
         public ProducerModel Producer { get; set; }
         public Rating Rating { get; set; }
 
+        // todo-maintability na co je toto dobre? je to nepouzite
         public static Product Empty => new()
         {
             Id = Guid.NewGuid(),

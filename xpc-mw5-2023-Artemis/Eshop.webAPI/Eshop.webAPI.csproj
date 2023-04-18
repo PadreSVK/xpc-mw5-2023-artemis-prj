@@ -9,6 +9,7 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
+    <!--todo-cleancode preco je to odstranene z compile grupy? -->
     <Compile Remove="Models\Product.cs" />
   </ItemGroup>
 

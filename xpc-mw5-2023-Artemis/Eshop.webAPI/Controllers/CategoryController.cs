@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Xml.Linq;
 
+// 
 namespace Eshop.webAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -18,7 +19,7 @@ namespace Eshop.webAPI.Controllers
         private readonly ILogger<CategoryController> _logger;
         private readonly IMapper _mapper;
 
-        public CategoryController(ILogger<CategoryController> logger, IMapper mapper)
+        public CategoryController(ILogger<CategoryController> logger, IMapper mapper, FakeDatabase fakeDatabase)
         {
             _logger = logger;
             _mapper = mapper;
@@ -144,6 +145,7 @@ namespace Eshop.webAPI.Controllers
 
 
         [HttpPut("{id}")]
+        //todo-other ako vyzera swagger.json?
         public IActionResult UpdateCategory(Guid id, [FromBody] CreateCategoryDTO categoryDTO)
         {
             try
@@ -151,6 +153,7 @@ namespace Eshop.webAPI.Controllers
                 var existingCategory = FakeDatabase.Categories.FirstOrDefault(c => c.Id == id);
                 if (existingCategory == null)
                 {
+                    // todo-other add id || categoryDTO
                     _logger.LogError($"Invalid UPDATE attempt in {nameof(UpdateCategory)})");
                     return BadRequest("Category not found.");
                 }

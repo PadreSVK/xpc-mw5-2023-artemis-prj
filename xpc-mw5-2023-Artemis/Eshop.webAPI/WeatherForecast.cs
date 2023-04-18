@@ -1,5 +1,6 @@
 namespace Eshop.webAPI
 {
+    //todo-cleancode
     public class WeatherForecast
     {
         public DateOnly Date { get; set; }

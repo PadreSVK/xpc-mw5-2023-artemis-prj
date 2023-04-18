@@ -22,14 +22,22 @@
                 return sum / _reviews.Count();
             }
         }
-        public CategoryModel Category { get; set; }
+        public CategoryModel Category { get; }
         public ManufacturerModel Manufacturer { get; set; }
+        
         public List<ReviewModel>? Reviews { get { return _reviews; }}
+
+        // todo-other
+        public List<ReviewModel>? Reviews =>  _reviews;
+        //todo-other (and use only private setter)
+        public List<ReviewModel>? Reviews { get;  private set;}
 
         public CommodityModel()
         {
+            // todo-cleancode
             Id= Guid.NewGuid();
         }
+        //todo-cleancode
         public void addReview(ReviewModel review)
         {
             _reviews.Add(review);

@@ -5,6 +5,7 @@ namespace Eshop.webAPI.DTO
     public class CreateCategoryDTO
     {
         [Required]
+        // todo-other pecka pozuitie 
         [StringLength(maximumLength: 255, ErrorMessage = "Category Name Is Too Long")]
         public string Name { get; set; }
     }

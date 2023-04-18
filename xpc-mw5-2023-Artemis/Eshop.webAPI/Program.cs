@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+// todo-other - why?
 builder.Services.AddControllers().AddNewtonsoftJson(op => 
     op.SerializerSettings.ReferenceLoopHandling = 
     Newtonsoft.Json.ReferenceLoopHandling.Ignore);
@@ -14,6 +15,8 @@ builder.Services.AddControllers().AddNewtonsoftJson(op =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MapperInitializer));
+builder.Services.AddSingleton<FakeDatabase>();
+
 
 var app = builder.Build();
 
@@ -27,6 +30,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // Initialization of FakeDatabase
+// todo-maintability = why is not registered as singleton? 
 FakeDatabase.InitDatabase();
 
 

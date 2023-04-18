@@ -17,6 +17,8 @@ namespace Eshop.DAL.Entities
         public int StockQuantity { get; set; }
         public CategoryEntity Category { get; set; }
         public ProducerEntity Producer { get; set; }
+        
+        // todo-requirements iba jeden rating per produkt? 
         public RatingEntity Rating { get; set; }
 
 
